@@ -51,8 +51,36 @@ $(function () {
 			}
 
 			//ajax
+			$.getJSON("	http://dummy.restapiexample.com/api/v1/create", { operation }, function () {
+				console.log("success");
+			})
+				.fail(function (error) {
+					let answer = 0;
+					let temp = "";
+					for (let i = 0; i < operation.length; i++) {
+						if (i === 0)
+							answer = operation[0];
+						else if (i % 2 === 0) {
+							switch (operation[i - 1]) {
+								case "+":
+									answer = answer + operation[i];
+									break;
+								case "-":
+									answer = answer - operation[i];
+									break;
+								case "*":
+									answer = answer * operation[i];
+									break;
+								case "/":
+									answer = answer / operation[i];
+									break;
+							}
+						}
+					}
+					$("input").val(answer);
+					operation.length = 0;
+				});
 		}
-		console.log(operation);
 	});
 
 	$(".clear").click(function() {

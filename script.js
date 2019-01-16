@@ -8,11 +8,13 @@ $(function () {
 		//if last click was oper or if array is empty
 		if (typeof lastEl === "string" || operation.length === 0) {
 			operation.push(parseInt(input));
+			$("input").val(input);
 		}
 		//else if last click was number
 		else if (typeof lastEl === "number") {
 			let temp = lastEl.toString() + input;
 			operation[operation.length - 1] = parseInt(temp);
+			$("input").val(temp);
 		}
 		console.log(operation);
 	});
@@ -21,7 +23,6 @@ $(function () {
 		let input = $(this).html();
 		let lastEl = operation[operation.length - 1];
 		
-
 		//if operation array is empty
 		if (operation.length === 0) {
 			operation.push(0);
@@ -56,6 +57,6 @@ $(function () {
 
 	$(".clear").click(function() {
 		operation.length = 0;
-		console.log(operation);
+		$("input").val("0");
 	});
 });

@@ -1,7 +1,7 @@
 $(function () {
 	const operation = [];
 
-	$(".num").click(function() {
+	$(".num").click(function () {
 		let input = $(this).html();
 		let lastEl = operation[operation.length - 1];
 
@@ -19,13 +19,19 @@ $(function () {
 		console.log(operation);
 	});
 
-	$(".oper").click(function() {
+	$(".oper").click(function () {
 		let input = $(this).html();
+		let displayNum = $("input").val();
 		let lastEl = operation[operation.length - 1];
-		
-		//if operation array is empty
-		if (operation.length === 0) {
+
+		//if operation array is empty and no number in display
+		if (operation.length === 0 && displayNum === "0") {
 			operation.push(0);
+			operation.push(input);
+		}
+		//else if operation array is empty but there is a num in display
+		else if (operation.length === 0 && displayNum !== "0") {
+			operation.push(parseInt(displayNum));
 			operation.push(input);
 		}
 		//else if last click was oper
@@ -33,20 +39,20 @@ $(function () {
 			operation[operation.length - 1] = input;
 		}
 		//else if last click was number
-		else if (typeof lastEl === "number"){
+		else if (typeof lastEl === "number") {
 			operation.push(input);
 		}
-		
+
 		console.log(operation);
 	});
 
-	$(".enter").click(function() {
+	$(".enter").click(function () {
 		let input = $(this).html();
-		let lastEl = operation[operation.length - 1];		
-		
-		if(operation.length >= 2){
+		let lastEl = operation[operation.length - 1];
+
+		if (operation.length >= 2) {
 			//if last click was operator
-			if(typeof lastEl === "string"){
+			if (typeof lastEl === "string") {
 				operation.push(operation[operation.length - 2]);
 			}
 
@@ -74,17 +80,26 @@ $(function () {
 								case "/":
 									answer = answer / operation[i];
 									break;
+								default:
+									break;
 							}
 						}
 					}
-					$("input").val(answer);
+					console.log(typeof answer, answer);
+					if (answer === Infinity || isNaN(answer)) {
+						$("input").val("Error");
+					}
+					else {
+						$("input").val(Math(answer));
+					}
 					operation.length = 0;
 				});
 		}
 	});
 
-	$(".clear").click(function() {
+	$(".clear").click(function () {
 		operation.length = 0;
 		$("input").val("0");
+		console.log(operation);
 	});
 });

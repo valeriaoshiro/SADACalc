@@ -16,7 +16,7 @@ $(function () {
 			operation[operation.length - 1] = parseInt(temp);
 			$("input").val(temp);
 		}
-		console.log(operation);
+		// console.log(operation);
 	});
 
 	$(".oper").click(function () {
@@ -43,7 +43,7 @@ $(function () {
 			operation.push(input);
 		}
 
-		console.log(operation);
+		// console.log(operation);
 	});
 
 	$(".enter").click(function () {
@@ -58,7 +58,7 @@ $(function () {
 
 			//ajax
 			$.getJSON("	http://dummy.restapiexample.com/api/v1/create", { operation }, function () {
-				console.log("success");
+				// console.log("success");
 			})
 				.fail(function (error) {
 					let answer = 0;
@@ -85,7 +85,7 @@ $(function () {
 							}
 						}
 					}
-					console.log(typeof answer, answer);
+					// console.log(typeof answer, answer);
 					if (answer === Infinity || isNaN(answer)) {
 						$("input").val("Error");
 					}
@@ -100,6 +100,6 @@ $(function () {
 	$(".clear").click(function () {
 		operation.length = 0;
 		$("input").val("0");
-		console.log(operation);
+		// console.log(operation);
 	});
 });

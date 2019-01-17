@@ -90,7 +90,7 @@ $(function () {
 						$("input").val("Error");
 					}
 					else {
-						$("input").val(Math(answer));
+						$("input").val(Math.floor(answer));
 					}
 					operation.length = 0;
 				});

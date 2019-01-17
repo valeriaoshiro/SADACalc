@@ -1,25 +1,50 @@
-1 + 1 = 2
+# SADA Calculator
+Calculator with addition, substraction, multiplication, and division features. The calculator calls a REST API to calculate the result. If the REST API fails, it will calculate the result with JavaScript.
 
-can change operator
-5 *
-  - 5 = 25
+## Built With
+* HTML
+* CSS
+* JavaScript
+* jQuery
 
-no first num, put 0 infront
-+ 5 = 0 + 5 = 5
+## Getting Started
+Code can be found at [Github repo](https://github.com/valeriaoshiro/SADACalc)
 
-no second num, put first num for second num
-4 + = 4 + 4 = 8
+Download files and open index.html on internet browser.
 
-chain operations
-1 + 12 * 3 - 10 = 29
+## Tests
+#### Basic commands
+* Click number > Shows number on display
+* Click operator > Nothing visible happens
+* Click AC > Clears all numbers on display and memory
+* Click enter > Result on display
+* Decimals get rounded
+* Dividing by 0 > Error
+#### Edge cases
+* Click operator without a first number > zero will be added to memory
 
-do math, use answer for more math
-1+2 = 3 +4 = 7
+  ie: &#160; ``+ 5 =``  &#160; Becomes &#160; ``0 + 5 = ``
+   
+  Result: 5
+* Can change operator
 
-AC clears the display and memory
+  ie: &#160; ``7 + ``  &#160; then  &#160; ``-`` &#160; Becomes &#160; ``7 - ``
+* Click enter without the second number > copies the first number to the second
 
-divide by 0 produces error
+  ie: &#160; ``7 + =`` &#160; Becomes &#160; ``7 + 7 = ``
+   
+  Result: 14
+* Chain operations
 
-if there is an error on display and you do math with it, result will be error
+  ie: &#160; ``1 + 12 * 3 - 10 =``
+  
+  Result: 29
+* Do an operation and get result. Do a second operation with the previous result
 
-decimals get rounded
+  ie: &#160; ``1 + 2 = ``&#160; Result: 3 &#160; ``+ 4 =``
+
+  Result: 7
+* If there is an error on display and try to do math with it, it will result on error
+
+## Author
+* Valeria Oshiro
